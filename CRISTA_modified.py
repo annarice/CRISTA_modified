@@ -320,9 +320,9 @@ if __name__ == '__main__':
 	# sgRNA_seq = args.sgseq --> original version
 	# full_dna_seq = args.genomic_seq --> original version
 
-	os.cwd()
-	input_file = "/sample/Lennay_sample.csv"
-	output_file = "/sample/Lennay_sample_output.csv"
+	cwd = os.getcwd()
+	input_file = cwd + "/sample/Leenay_sample.csv"
+	output_file = cwd + "/sample/Leenay_sample_output.csv"
 
 	input = pd.read_csv(input_file)
 	input["CRISTA_prediction"] = np.nan
