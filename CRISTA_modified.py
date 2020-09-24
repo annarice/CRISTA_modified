@@ -64,6 +64,7 @@ import re
 import numpy as np
 import pandas as pd  # addition to the modified script
 import PA_limitedIndel as PA_script
+import os
 
 ### globals
 RF_PICKLE_PATH = "CRISTA_predictors.pkl"
@@ -311,18 +312,17 @@ def predict_crista_score(features_lst):
 
 
 if __name__ == '__main__':
-	parser = argparse.ArgumentParser(description='CRISTA, a tool for CRISPR Target Assessment')
+	# parser = argparse.ArgumentParser(description='CRISTA, a tool for CRISPR Target Assessment') --> original version
 	# parser.add_argument('--sgseq', '-s', required=True, help="sgRNA seq of 20 bases (without PAM)") --> original version
 	# parser.add_argument('--genomic_seq', '-d', required=True, help="DNA target sequence with 3 additional bases at each end (total of 29 nucleotides)") --> original version
-	parser.add_argument('--in_file', '-in', required=True, help="CSV input file with the following headers in it: upstream, protospacer, PAM, downstream")
-	parser.add_argument('--out_file', '-out', required=True, help="CSV output file full path")
 
-	args = parser.parse_args()
+	# args = parser.parse_args() --> original version
 	# sgRNA_seq = args.sgseq --> original version
 	# full_dna_seq = args.genomic_seq --> original version
 
-	input_file = args.in_file
-	output_file = args.out_file
+	os.cwd()
+	input_file = "/sample/Lennay_sample.csv"
+	output_file = "/sample/Lennay_sample_output.csv"
 
 	input = pd.read_csv(input_file)
 	input["CRISTA_prediction"] = np.nan
