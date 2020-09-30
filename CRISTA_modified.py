@@ -316,7 +316,7 @@ if __name__ == '__main__':
 	# parser.add_argument('--sgseq', '-s', required=True, help="sgRNA seq of 20 bases (without PAM)") --> original version
 	# parser.add_argument('--genomic_seq', '-d', required=True, help="DNA target sequence with 3 additional bases at each end (total of 29 nucleotides)") --> original version
 	parser.add_argument('--in_file', '-in', required=True, help="CSV input file with the following headers in it: upstream, protospacer, PAM, downstream")
-	parser.add_argument('--out_file', '-out', required=True, help="CSV output file full path")
+	parser.add_argument('--out_file', '-out', required=True, help="CSV output file")
 
 	args = parser.parse_args()
 	# sgRNA_seq = args.sgseq --> original version
@@ -326,8 +326,8 @@ if __name__ == '__main__':
 	output_file = args.out_file
 
 	cwd = os.getcwd()
-	input_file = cwd + input_file
-	output_file = cwd + output_file
+	input_file = cwd + "/" + input_file
+	output_file = cwd + "/" + output_file
 
 	input = pd.read_csv(input_file)
 	input["CRISTA_prediction"] = np.nan
